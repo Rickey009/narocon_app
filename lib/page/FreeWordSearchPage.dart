@@ -6,6 +6,7 @@ class FreeWordSearchPage extends StatefulWidget {
 }
 
 class _FreeWordSearchPage extends State<FreeWordSearchPage> {
+
   var _textFieldFocusNode;
   var _inputController = TextEditingController();
   var _chipList = List<Chip>();
@@ -55,26 +56,27 @@ class _FreeWordSearchPage extends State<FreeWordSearchPage> {
         child: Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
-
-            ),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                          focusNode: _textFieldFocusNode,
+                          autofocus: false,
+                          controller: _inputController,
+                          onSubmitted: _onSubmitted,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: '食材・料理名で探す',
+                            prefixIcon: Icon(Icons.search, color: Colors.white),
+                          )),
+                    ),
+                  ],
+                )),
             body: Column(children: <Widget>[
               Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    TextField(
-                      focusNode: _textFieldFocusNode,
-                      autofocus: false,
-                      controller: _inputController,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.black,
-                      ),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: '食材・料理名で探す',
-                      ),
-                      onSubmitted: _onSubmitted,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
